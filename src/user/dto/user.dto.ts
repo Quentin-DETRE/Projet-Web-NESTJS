@@ -1,12 +1,20 @@
 import { IsNumber, IsString } from "class-validator";
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 
+@Entity()
 export class UserDto {
-    @IsNumber()
+    @PrimaryGeneratedColumn()
     id: number;
 
-    @IsString()
+    @Column()
+    isAdmin: boolean;
+
+    @Column()
     name: string;
 
-    @IsString() 
+    @Column() 
     lastName : string;
+
+    @Column()
+    Password: string;
 }

@@ -7,13 +7,13 @@ import { UserDto } from 'src/user/dto/user.dto';
 export class UserController {
     constructor(private userService: UserService) {};
 
-    @Post('/')
-    create(@Body() user: UserDto): UserDto {
-        return this.userService.create(user);
-    }
+    // @Post('/')
+    // create(@Body() user: UserDto): UserDto {
+    //     return this.create(userService);
+    // }
 
     @Get('/')
-    findAll(): UserDto[] {
+    findAll(): Promise<UserDto[]> {
         return this.userService.findAll();
     }
 }
