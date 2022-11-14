@@ -4,6 +4,8 @@ import { AppService } from './app.service';
 import { UserModule } from './user/user.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserDto } from './user/dto/user.dto';
+import { ArticleDto } from './article/dto/article.dto';
+import { ArticleModule } from './article/article.module';
 
 @Module({
   controllers: [AppController],
@@ -16,10 +18,11 @@ import { UserDto } from './user/dto/user.dto';
       username: 'root',
       password: '',
       database: 'catcatcatcat',
-      entities: [UserDto],
+      entities: [UserDto, ArticleDto],
       synchronize: true,
       autoLoadEntities: true,
     }),
+    ArticleModule,
   ],
 })
 export class AppModule {}

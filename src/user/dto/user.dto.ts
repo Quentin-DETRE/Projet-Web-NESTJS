@@ -1,4 +1,4 @@
-import { IsNumber, IsString } from "class-validator";
+import { ArticleDto } from 'src/article/dto/article.dto';
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 
 @Entity()
@@ -9,12 +9,15 @@ export class UserDto {
     @Column()
     isAdmin: boolean;
 
-    @Column()
+    @Column({length : 25})
     name: string;
 
-    @Column() 
+    @Column({length: 25}) 
     lastName : string;
 
-    @Column()
-    Password: string;
+    @Column({length: 50})
+    password: string;
+
+    @OneToMany(type => ArticleDto, article => article.user)
+    articles: ArticleDto[];
 }
