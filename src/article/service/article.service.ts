@@ -12,8 +12,10 @@ export class ArticleService {
     ) {}
 
 
-    async createArticle(user: ArticleDto) {
-        this.articleRepository.save(user);
+    async createArticle(article: ArticleDto) {
+        if(article.user.isAdmin == true) {
+            this.articleRepository.save(article);
+        }
     }
     async getArticles():Promise<ArticleDto[]> {
         return this.articleRepository.find();

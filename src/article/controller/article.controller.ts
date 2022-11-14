@@ -25,9 +25,8 @@ export class ArticleController {
 
     @Put(':isAdmin')
     update(@Body() article: ArticleDto) {
-        if (article.user.isAdmin == true) {
-            return this.articleService.updateArticle(article);
-        }
+        return this.articleService.updateArticle(article);
+
     }
 
     @Delete(':id')

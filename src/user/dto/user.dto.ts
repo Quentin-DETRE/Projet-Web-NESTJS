@@ -6,9 +6,9 @@ export class UserDto {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column()
+    @Column({default: false})
     isAdmin: boolean;
-
+ 
     @Column({length : 25})
     name: string;
 
