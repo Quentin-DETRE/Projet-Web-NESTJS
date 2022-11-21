@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, Put, Delete, Param } from '@nestjs/common';
+import { Body, Controller, Get, Post, Put, Delete, Param, UseInterceptors, ClassSerializerInterceptor } from '@nestjs/common';
 import { ArticleService } from '../service/article.service';
 import { ArticleDto } from 'src/article/dto/article.dto';
 
@@ -8,13 +8,15 @@ export class ArticleController {
 
     constructor(private articleService: ArticleService) {};
 
+    @UseInterceptors(ClassSerializerInterceptor)
     @Get(':id')
     get(@Param() params) {
         return this.articleService.getArticle(params.id);
     }
 
+    @UseInterceptors(ClassSerializerInterceptor)
     @Get()
-    getAllUsers() {
+    getAllArticles() {
         return this.articleService.getArticles();
     }
 
@@ -23,10 +25,9 @@ export class ArticleController {
         return this.articleService.createArticle(article);
     }
 
-    @Put(':isAdmin')
+    @Put()
     update(@Body() article: ArticleDto) {
         return this.articleService.updateArticle(article);
-
     }
 
     @Delete(':id')

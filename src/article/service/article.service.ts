@@ -18,13 +18,15 @@ export class ArticleService {
         }
     }
     async getArticles():Promise<ArticleDto[]> {
-        return this.articleRepository.find();
+        return this.articleRepository.find({
+            relations:["user"]
+        });
     }
 
     async getArticle(_id: number):Promise<ArticleDto[]> {
         return await this.articleRepository.find({
-            select:["user", "title", "text"],
-            where: [{"id": _id}]
+            where: [{"id": _id}],
+            relations:["user"]
         });
     }
 
