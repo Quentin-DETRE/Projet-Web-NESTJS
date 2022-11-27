@@ -21,12 +21,8 @@ export class UserDto {
     @Column({length: 25}) 
     lastName : string;
 
-
-
-
-
     @Column({length: 50})
-    pass: string;
+    password: string;
 
     @OneToMany(type => ArticleDto, article => article.user)
     articles: ArticleDto[];
