@@ -9,14 +9,24 @@ export class UserDto {
     @Column({default: false})
     isAdmin: boolean;
  
+    @Column({length: 25}) 
+    username : string;
+
+    @Column({length: 25}) 
+    mail : string;
+    
     @Column({length : 25})
     name: string;
 
     @Column({length: 25}) 
     lastName : string;
 
+
+
+
+
     @Column({length: 50})
-    password: string;
+    pass: string;
 
     @OneToMany(type => ArticleDto, article => article.user)
     articles: ArticleDto[];

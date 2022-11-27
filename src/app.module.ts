@@ -6,6 +6,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserDto } from './user/dto/user.dto';
 import { ArticleDto } from './article/dto/article.dto';
 import { ArticleModule } from './article/article.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   controllers: [AppController],
@@ -23,6 +24,7 @@ import { ArticleModule } from './article/article.module';
       autoLoadEntities: true,
     }),
     ArticleModule,
+    AuthModule,
   ],
 })
 export class AppModule {}
