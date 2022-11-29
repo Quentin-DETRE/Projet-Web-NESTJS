@@ -1,4 +1,5 @@
 import { type } from 'os';
+import { FavoriteDto } from 'src/favorite/favorite.dto/favorite.dto';
 import { UserDto } from 'src/user/dto/user.dto';
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany, ManyToMany, ManyToOne } from 'typeorm';
 
@@ -16,5 +17,8 @@ export class ArticleDto {
 
     @Column() 
     text : string;
+
+    @OneToMany(type => FavoriteDto, favorite => favorite.article)
+    favorite: FavoriteDto;
 }
 

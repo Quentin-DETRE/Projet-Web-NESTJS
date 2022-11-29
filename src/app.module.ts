@@ -7,6 +7,7 @@ import { UserDto } from './user/dto/user.dto';
 import { ArticleDto } from './article/dto/article.dto';
 import { ArticleModule } from './article/article.module';
 import { AuthModule } from './auth/auth.module';
+import { FavoriteModule } from './favorite/favorite.module';
 
 @Module({
   controllers: [AppController],
@@ -25,6 +26,7 @@ import { AuthModule } from './auth/auth.module';
     }),
     ArticleModule,
     AuthModule,
+    FavoriteModule,
   ],
 })
 export class AppModule {}
