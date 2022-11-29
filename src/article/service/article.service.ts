@@ -23,8 +23,8 @@ export class ArticleService {
         });
     }
 
-    async getArticle(_id: number):Promise<ArticleDto[]> {
-        return await this.articleRepository.find({
+    async getArticle(_id: number):Promise<ArticleDto> {
+        return await this.articleRepository.findOne({
             where: [{"id": _id}],
             relations:["user"]
         });

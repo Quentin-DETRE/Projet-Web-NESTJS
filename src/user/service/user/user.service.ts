@@ -21,13 +21,11 @@ export class UserService {
         });
     }
 
-    // async findOne(username: string): Promise<UserDto[]> {
-    //     return await this.userRepository.find({
-    //         select: ["password"],
-    //         where: [{"username": username}],
-            
-    //     });
-    // }
+    async findOne(username: string): Promise<UserDto> {
+        return await this.userRepository.findOne({
+            where: [{"username": username}]
+        });
+    }
 
     async updateUser(user : UserDto) {
         this.userRepository.save(user);
