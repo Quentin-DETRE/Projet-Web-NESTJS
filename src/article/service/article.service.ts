@@ -30,6 +30,12 @@ export class ArticleService {
         });
     }
 
+    async getArticlesByTag(_tag: string): Promise<ArticleDto[]> {
+        return await this.articleRepository.find({
+            where:[{"tag":_tag}]
+        })
+    }
+
     async updateArticle(user : ArticleDto) {
         this.articleRepository.save(user);
     }

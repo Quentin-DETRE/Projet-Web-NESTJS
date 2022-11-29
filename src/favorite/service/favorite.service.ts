@@ -11,12 +11,12 @@ export class FavoriteService {
     async createFavorite(favorite: FavoriteDto) {
         this.favoriteRepository.save(favorite);
     }
+
     async getFavorite():Promise<FavoriteDto[]> {
         return this.favoriteRepository.find();
     }
-
-    async getAllFavoriteFromUser(user: UserDto):Promise<FavoriteDto> {
-        return await this.favoriteRepository.findOne({
+    async getAllFavoriteFromUser(user: UserDto):Promise<FavoriteDto[]> {
+        return await this.favoriteRepository.find({
             where: [{"user": user}]
         });
     }

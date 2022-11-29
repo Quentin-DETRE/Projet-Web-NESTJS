@@ -8,7 +8,7 @@ export class UserController {
 
     @Get(':id')
     get(@Param() params) {
-        return this.userService.getUser(params.id);
+        return this.userService.getUserById(params.id);
     }
 
     @Get()

@@ -11,17 +11,16 @@ export class UserService {
     async createUser(user: UserDto) {
         this.userRepository.save(user);
     }
+
     async getUsers():Promise<UserDto[]> {
         return this.userRepository.find();
     }
-
-    async getUser(_id: number):Promise<UserDto> {
+    async getUserById(_id: number):Promise<UserDto> {
         return await this.userRepository.findOne({
             where: [{"id": _id}]
         });
     }
-
-    async findOne(username: string): Promise<UserDto> {
+    async getUserByUsername(username: string): Promise<UserDto> {
         return await this.userRepository.findOne({
             where: [{"username": username}]
         });
@@ -30,7 +29,6 @@ export class UserService {
     async updateUser(user : UserDto) {
         this.userRepository.save(user);
     }
-
     async deleteUser(user: UserDto) {
         this.userRepository.delete(user);
     }

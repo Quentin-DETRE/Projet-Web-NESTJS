@@ -18,6 +18,9 @@ export class ArticleDto {
     @Column() 
     text : string;
 
+    @Column()
+    tag: string;
+
     @OneToMany(type => FavoriteDto, favorite => favorite.article)
     favorite: FavoriteDto;
 }
