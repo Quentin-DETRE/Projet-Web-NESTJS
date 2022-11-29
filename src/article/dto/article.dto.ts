@@ -8,7 +8,6 @@ export class ArticleDto {
     @PrimaryGeneratedColumn()
     id: number;
 
-    
     @ManyToOne(type => UserDto, user => user.articles) 
     user : UserDto;
 
