@@ -10,26 +10,23 @@ export class ArticleService {
         @InjectRepository(ArticleDto)
         private articleRepository: Repository<ArticleDto>,
     ) {}
-
-
     async createArticle(article: ArticleDto) {
         if(article.user.isAdmin == true) {
             this.articleRepository.save(article);
         }
     }
+
     async getArticles():Promise<ArticleDto[]> {
         return this.articleRepository.find({
             relations:["user"]
         });
     }
-
-    async getArticle(_id: number):Promise<ArticleDto> {
+    async getArticleById(_id: number):Promise<ArticleDto> {
         return await this.articleRepository.findOne({
             where: [{"id": _id}],
             relations:["user"]
         });
     }
-
     async getArticlesByTag(_tag: string): Promise<ArticleDto[]> {
         return await this.articleRepository.find({
             where:[{"tag":_tag}]
@@ -39,7 +36,6 @@ export class ArticleService {
     async updateArticle(user : ArticleDto) {
         this.articleRepository.save(user);
     }
-
     async deleteArticle(user: ArticleDto) {
         this.articleRepository.delete(user);
     }

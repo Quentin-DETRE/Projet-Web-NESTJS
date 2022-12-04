@@ -11,13 +11,17 @@ export class ArticleController {
     @UseInterceptors(ClassSerializerInterceptor)
     @Get(':id')
     get(@Param() params) {
-        return this.articleService.getArticle(params.id);
+        return this.articleService.getArticleById(params.id);
     }
 
     @UseInterceptors(ClassSerializerInterceptor)
     @Get()
     getAllArticles() {
         return this.articleService.getArticles();
+    }
+    @Get()
+    getArticleByTag(@Param() params) {
+        return this.articleService.getArticlesByTag(params.tag)
     }
 
     @Post('post')
