@@ -19,7 +19,7 @@ export class ArticleController {
     getAllArticles() {
         return this.articleService.getArticles();
     }
-    @Get(':tag')
+    @Get('s/:tag')
     getArticleByTag(@Param() params) {
         return this.articleService.getArticlesByTag(params.tag)
     }
