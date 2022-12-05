@@ -10,7 +10,8 @@ export class UserService {
     constructor(@InjectRepository(UserDto) private userRepository: Repository<UserDto>) {}
 
     async createUser(user: UserDto) {
-        user.password = await bcrypt.hash(user.password, 10)
+        const salt = await bcrypt.genSalt();
+        user.password = await bcrypt.hash(user.password, salt);
         this.userRepository.save(user);
     }
 
