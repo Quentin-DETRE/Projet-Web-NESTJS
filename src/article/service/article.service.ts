@@ -14,6 +14,9 @@ export class ArticleService {
         if(article.user.isAdmin == true) {
             this.articleRepository.save(article);
         }
+        else {
+            return null;
+        }
     }
 
     async getArticles():Promise<ArticleDto[]> {

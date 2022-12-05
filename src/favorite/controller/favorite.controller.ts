@@ -18,7 +18,7 @@ export class FavoriteController {
     }
 
     @Post('post')
-    create(@Body() user: FavoriteDto){
+    createFavorite(@Body() user: FavoriteDto){
         return this.favoriteService.createFavorite(user);
     }
 
@@ -28,7 +28,7 @@ export class FavoriteController {
     }
 
     @Delete(':id')
-    deleteUser(@Param() params) {
+    deleteFavorite(@Param() params) {
         return this.favoriteService.deleteFavorite(params.id);
     }
 }

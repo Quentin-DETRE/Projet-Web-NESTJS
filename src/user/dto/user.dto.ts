@@ -2,6 +2,7 @@ import { ArticleDto } from 'src/article/dto/article.dto';
 import { FavoriteDto} from 'src/favorite/favorite.dto/favorite.dto';
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 
+
 @Entity()
 export class UserDto {
     @PrimaryGeneratedColumn()
