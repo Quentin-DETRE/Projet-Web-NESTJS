@@ -5,15 +5,16 @@ import { UserDto } from 'src/user/dto/user.dto';
 import * as bcrypt from 'bcrypt';
 
 
+
 @Injectable()
 export class UserService {
     constructor(@InjectRepository(UserDto) private userRepository: Repository<UserDto>) {}
 
     async createUser(user: UserDto) {
-        const salt = await bcrypt.genSalt();
+        const salt = await bcrypt.genSalt(10);
         user.password = await bcrypt.hash(user.password, salt);
         this.userRepository.save(user);
-    }
+    } 
 
     async getUsers():Promise<UserDto[]> {
         return this.userRepository.find();

@@ -1,7 +1,8 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { ArticleDto } from 'src/article/dto/article.dto';
+import { ApiUnauthorizedResponse } from '@nestjs/swagger';
 
 
 @Injectable()
@@ -11,12 +12,10 @@ export class ArticleService {
         private articleRepository: Repository<ArticleDto>,
     ) {}
     async createArticle(article: ArticleDto) {
-        if(article.user.isAdmin == true) {
-            this.articleRepository.save(article);
+        if(!article.user.isAdmin) {
+            throw new UnauthorizedException();
         }
-        else {
-            return null;
-        }
+        this.articleRepository.save(article);
     }
 
     async getArticles():Promise<ArticleDto[]> {
