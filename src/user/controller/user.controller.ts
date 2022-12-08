@@ -6,9 +6,14 @@ import { UserDto } from 'src/user/dto/user.dto';
 export class UserController {
     constructor(private userService: UserService) {};
 
-    @Get(':id')
+    @Get('idUser/:id')
     get(@Param() params) {
         return this.userService.getUserById(params.id);
+    }
+
+    @Get('username/:username')
+    getWithUsername(@Param() params) {
+        return this.userService.getUserByUsernameForSearch(params.username);
     }
 
     @Get()

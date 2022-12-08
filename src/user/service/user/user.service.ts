@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, UnauthorizedException , HttpException, HttpStatus} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { UserDto } from 'src/user/dto/user.dto';
@@ -11,6 +11,14 @@ export class UserService {
     constructor(@InjectRepository(UserDto) private userRepository: Repository<UserDto>) {}
 
     async createUser(user: UserDto) {
+        if (await this.userRepository.findOne({ where: [{"username": user.username}]})) {
+            throw new HttpException('Username already exist', HttpStatus.BAD_REQUEST);
+        }
+
+        if (await this.userRepository.findOne({ where: [{"mail": user.mail}]})) {
+            throw new HttpException('Email already exist', HttpStatus.BAD_REQUEST);
+        }
+
         const salt = await bcrypt.genSalt(10);
         user.password = await bcrypt.hash(user.password, salt);
         this.userRepository.save(user);
@@ -39,6 +47,8 @@ export class UserService {
     }
 
     async updateUser(user : UserDto) {
+        const salt = await bcrypt.genSalt(10);
+        user.password = await bcrypt.hash(user.password, salt);
         this.userRepository.save(user);
     }
     async deleteUser(user: UserDto) {
