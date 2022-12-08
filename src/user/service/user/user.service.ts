@@ -29,7 +29,6 @@ export class UserService {
     }
     async getUserById(_id: number):Promise<UserDto> {
         return await this.userRepository.findOne({
-            select: ["id", "isAdmin", "lastName", "mail", "name", "username","articles", "favorite"],
             where: [{"id": _id}]
         });
     }
