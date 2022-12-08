@@ -18,13 +18,13 @@ export class FavoriteController {
     }
 
     @Post('post')
-    createFavorite(@Body() user: FavoriteDto){
-        return this.favoriteService.createFavorite(user);
+    createFavorite(@Body() favorite: FavoriteDto){
+        return this.favoriteService.createFavorite(favorite);
     }
 
     @Put()
-    updateFavorite(@Body() user: FavoriteDto) {
-        return this.favoriteService.updateFavorite(user);
+    updateFavorite(@Body() favorite: FavoriteDto) {
+        return this.favoriteService.updateFavorite(favorite);
     }
 
     @Delete(':id')
