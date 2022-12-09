@@ -2,7 +2,6 @@ import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { ArticleDto } from 'src/article/dto/article.dto';
-import { ApiUnauthorizedResponse } from '@nestjs/swagger';
 
 
 @Injectable()
