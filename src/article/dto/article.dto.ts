@@ -15,7 +15,7 @@ export class ArticleDto {
     @Column({nullable: false} )
     title: string;
 
-    @Column({nullable: false}) 
+    @Column({length: 10000,nullable: false}) 
     text : string;
 
     @Column({nullable: false})
