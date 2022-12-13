@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { userInfo } from 'os';
 import { UserDto } from 'src/user/dto/user.dto';
 import { Repository } from 'typeorm';
 import { FavoriteDto } from '../favorite.dto/favorite.dto';
@@ -20,7 +21,6 @@ export class FavoriteService {
             where: [{"user": user}]
         });
     }
-
 
     async updateFavorite(favorite : FavoriteDto) {
         this.favoriteRepository.save(favorite);

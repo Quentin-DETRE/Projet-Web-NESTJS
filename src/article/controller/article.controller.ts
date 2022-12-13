@@ -9,7 +9,7 @@ export class ArticleController {
     constructor(private articleService: ArticleService) {};
 
     @UseInterceptors(ClassSerializerInterceptor)
-    @Get('articlesId/:id')
+    @Get('id/:id')
     get(@Param() params) {
         return this.articleService.getArticleById(params.id);
     }
@@ -19,7 +19,7 @@ export class ArticleController {
     getAllArticles() {
         return this.articleService.getArticles();
     }
-    @Get('articlesTag/:tag')
+    @Get('tag/:tag')
     getArticleByTag(@Param() params) {
         return this.articleService.getArticlesByTag(params.tag)
     }
@@ -34,7 +34,7 @@ export class ArticleController {
         return this.articleService.updateArticle(article);
     }
 
-    @Delete('articleDelete/:id')
+    @Delete('delete/:id')
     deleteArticle(@Param() params) {
         return this.articleService.deleteArticle(params.id);
     }
