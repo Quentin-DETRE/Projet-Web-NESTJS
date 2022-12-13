@@ -6,12 +6,12 @@ import { UserDto } from 'src/user/dto/user.dto';
 export class UserController {
     constructor(private userService: UserService) {};
 
-    @Get('id/:id')
+    @Get('userId/:id')
     get(@Param() params) {
         return this.userService.getUserById(params.id);
     }
 
-    @Get('username/:username')
+    @Get('userUsername/:username')
     getWithUsername(@Param() params) {
         return this.userService.getUserByUsernameForSearch(params.username);
     }
@@ -31,7 +31,7 @@ export class UserController {
         return this.userService.updateUser(user);
     }
 
-    @Delete(':id')
+    @Delete('userDelete/:id')
     deleteUser(@Param() params) {
         return this.userService.deleteUser(params.id);
     }

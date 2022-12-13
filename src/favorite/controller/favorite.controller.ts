@@ -12,7 +12,7 @@ export class FavoriteController {
         return this.favoriteService.getFavorite();
     }
 
-    @Get('user')
+    @Get('favorite/:user')
     getAllFavoriteFromUser(@Param() params) {
         return this.favoriteService.getAllFavoriteFromUser(params.user);
     }
@@ -27,7 +27,7 @@ export class FavoriteController {
         return this.favoriteService.updateFavorite(favorite);
     }
 
-    @Delete(':id')
+    @Delete('favoriteDelete/:id')
     deleteFavorite(@Param() params) {
         return this.favoriteService.deleteFavorite(params.id);
     }
