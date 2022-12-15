@@ -17,19 +17,11 @@ export class FavoriteService {
         return this.favoriteRepository.find();
     }
     async getAllFavoriteFromUser(user: number):Promise<FavoriteDto[]> {
-        console.log(user);
         const thisUser = this.favoriteRepository
         .createQueryBuilder()
         .where("FavoriteDto.user = :id", {id: user})
-        console.log(thisUser.getParameters());
         const result = await thisUser.execute();
-        console.log(result)
         return result;
-        // const getUser = await this.favoriteRepository.findOne({ select: ["user"]});
-        // return await this.favoriteRepository.find({
-        //     relations: ["articles"],
-        //     where: [getUser == thisUser]
-        // });
     }
 
     async updateFavorite(favorite : FavoriteDto) {
